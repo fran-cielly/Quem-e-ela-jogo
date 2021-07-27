@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Quem é ela?</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/estilo.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="css/hover.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="login" class="col-6 d-flex flex-column align-items-center">
+                   
+                    <div id="caixa-logo" class="w-50 d-flex flex-column">
+                        <img class="flip-in-hor-bottom" src="css/img/logo.png">
+                        <p class="jello-horizontal">Um jogo cara-a-cara só com mulheres da ciência</p>
+                    </div>
+
+                    <div class="p-2 col-7">
+                        <form id="form-login">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Escolha seu nome</label>
+                                <input type="text" class="form-control" id="nomeUsuarioCadastro" aria-describedby="name" placeholder="">
+                              </div>
+                              <br>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Escolha sua senha</label>
+                                <input type="password" class="form-control" id="senhaUsuarioCadastro" aria-describedby="senha" placeholder="">
+                              </div>
+                              <br>
+                              <button id="btn-cadastro" type="button" class="btn-jogo btn btn-primary btn-lg btn-block bounce-in-left">Cadastrar-se</button>
+                        </form>
+                    </div>
+
+                    <div class="p-2 ">
+
+                    </div>
+                </div>
+                <div id="fundo" class="col-6 d-flex justify-content-end align-items-start">
+                    <a href="index.html"><button id="btn-ir" type="button" class="btn btn-jogo">Entrar</button></a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/requisicoes.js"></script>
+</html>

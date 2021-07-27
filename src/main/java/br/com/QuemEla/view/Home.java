@@ -11,6 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class Home {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
-		return new ModelAndView("teste");
+		return new ModelAndView("index");
 	}
 }
