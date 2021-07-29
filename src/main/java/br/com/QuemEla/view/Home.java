@@ -13,4 +13,9 @@ public class Home {
 	public ModelAndView index() {
 		return new ModelAndView("index");
 	}
+	
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	public ModelAndView cadastro() {
+		return new ModelAndView("cadastro");
+	}
 }
