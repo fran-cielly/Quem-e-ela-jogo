@@ -21,13 +21,14 @@ public class FuncoesUsuario {
 
 	@PostMapping(path = "/usuario/cadastrar", produces = { "application/json" })
 	public String novoUsuario(@RequestBody Jogador jogador) {
+		
 		new ListaDeMensagens();
-		if(dao.verificaNome(jogador.getNome())) {
+		//if(dao.verificaNome(jogador.getNome())) {
 			dao.salvarJogador(jogador);
-			return gson.toJson(ListaDeMensagens.getMensagemSucesso());
-		}else{
+			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
+		/*}else{
 			return gson.toJson(ListaDeMensagens.getMensagem("nome usado"));
-		}
+		}*/
 	}
 
 	// @GetMapping(path = "/usuario/listar/{cod}")

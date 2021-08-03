@@ -22,15 +22,15 @@
                         <form id="form-login">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Escolha seu nome</label>
-                                <input type="text" class="form-control" id="nomeUsuarioCadastro" aria-describedby="name" placeholder="">
+                                <input type="text" class="form-control" id="nomeUsuarioCadastro" aria-describedby="name" placeholder="" required="required">
                               </div>
                               <br>
                               <div class="form-group">
                                 <label for="exampleInputEmail1">Escolha sua senha</label>
-                                <input type="password" class="form-control" id="senhaUsuarioCadastro" aria-describedby="senha" placeholder="">
+                                <input type="password" class="form-control" id="senhaUsuarioCadastro" aria-describedby="senha" placeholder="" required="required">
                               </div>
                               <br>
-                              <button id="btn-cadastro" type="button" class="btn-jogo btn btn-primary btn-lg btn-block bounce-in-left">Cadastrar-se</button>
+                              <button id="btn-cadastro" type="submit" class="btn-jogo btn btn-primary btn-lg btn-block bounce-in-left">Cadastrar-se</button>
                         </form>
                     </div>
 
@@ -46,5 +46,6 @@
     </body>
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/requisicoes.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/requisicoesLogin.js"></script>
 </html>
