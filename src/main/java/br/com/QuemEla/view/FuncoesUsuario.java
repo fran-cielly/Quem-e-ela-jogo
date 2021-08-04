@@ -11,6 +11,7 @@ import br.com.QuemEla.control.JogadorDAO;
 import br.com.QuemEla.control.ListaDeMensagens;
 import br.com.QuemEla.model.Jogador;
 import br.com.QuemEla.model.Mensagem;
+import br.com.QuemEla.sessao.SessaoLogin;
 
 @RestController
 public class FuncoesUsuario {
@@ -23,23 +24,33 @@ public class FuncoesUsuario {
 	public String novoUsuario(@RequestBody Jogador jogador) {
 		
 		new ListaDeMensagens();
-		//if(dao.verificaNome(jogador.getNome())) {
+		
+		String nome = jogador.getNome();
+		
+		if(nome!=null && dao.verificaNome(nome)) {
 			dao.salvarJogador(jogador);
+			
 			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
-		/*}else{
+		}else{
 			return gson.toJson(ListaDeMensagens.getMensagem("nome usado"));
-		}*/
+		}
 	}
 
 	// @GetMapping(path = "/usuario/listar/{cod}")
 	@PostMapping(path = "/usuario/login", produces = { "application/json" })
 	public String login(@RequestBody Jogador jogadorlogin) {
 		try {
+			new ListaDeMensagens();
 			Jogador jogador = dao.getJogadorByEmail(jogadorlogin.getNome(), jogadorlogin.getSenha());
-			return gson.toJson(jogador);
+			
+			if(jogador != null) {
+				SessaoLogin.setJogadorLogado(jogador);
+				return gson.toJson(jogador);
+			}else {
+				return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));
+			}
 
 		} catch (Exception e) {
-			new ListaDeMensagens();
 			return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));
 		}
 	}

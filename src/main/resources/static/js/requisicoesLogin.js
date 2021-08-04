@@ -14,11 +14,11 @@ $(document).ready(function() {
                 "foto":""
             }),
             success: function(res){
-                swal(res.mensagem, "Já vamos começar a jogar!", "success");
+               
             }
         })
         .done(function(msg){
-            swal(res.mensagem, "Já vamos começar a jogar!", "success");
+           
         })
         .fail(function(jqXHR, textStatus, msg){
             alert(msg);
@@ -38,11 +38,15 @@ $(document).ready(function() {
                 "senha": $('#senhaUsuario').val(),
             }),
             success: function(res){
-                swal(res.mensagem, "Já vamos começar a jogar!", "success");
+               
             }
         })
-        .done(function(msg){
-            swal(res.mensagem, "Já vamos começar a jogar!", "success");
+        .done(function(resp){
+            var msg = JSON.parse(resp);    
+            if(msg == 200){
+                window.location.href = "/home"
+            }
+        	
         })
         .fail(function(jqXHR, textStatus, msg){
             alert(msg);

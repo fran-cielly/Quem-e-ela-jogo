@@ -13,7 +13,7 @@ public class ListaDeMensagens {
 		listaMensagens.put("nao encontrado", new Mensagem(404, "Jogador não encontrado"));
 		listaMensagens.put("ok", new Mensagem(200, "Ok"));
 		listaMensagens.put("cadastrado", new Mensagem(200, "Cadastrado com sucesso"));
-		listaMensagens.put("nome usado", new Mensagem(200, "Nome ja utilizado"));
+		listaMensagens.put("nome usado", new Mensagem(200, "Esse nome já foi usado, escolha outro"));
 	}
 	public static Mensagem getMensagem(String mensagem) {
 		return listaMensagens.get(mensagem);

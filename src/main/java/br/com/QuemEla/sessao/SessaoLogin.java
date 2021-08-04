@@ -2,7 +2,7 @@ package br.com.QuemEla.sessao;
 
 import br.com.QuemEla.model.Jogador;
 
-public class sessaoLogin {
+public class SessaoLogin {
 	static Jogador jogadorLogado;
 	public static Jogador getJogadorLogado() {
 		return jogadorLogado;

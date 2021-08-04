@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.QuemEla.model.Jogador;
+import br.com.QuemEla.sessao.SessaoLogin;
+
 @Controller
-public class Home {
+public class Paginas {
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		return new ModelAndView("index");
@@ -17,5 +21,15 @@ public class Home {
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 	public ModelAndView cadastro() {
 		return new ModelAndView("cadastro");
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public ModelAndView home() {
+		Jogador jogador = SessaoLogin.getJogadorLogado();
+		if(jogador !=null) {
+			return new ModelAndView("index");
+		}else {
+			return new ModelAndView("home");
+		}
 	}
 }
