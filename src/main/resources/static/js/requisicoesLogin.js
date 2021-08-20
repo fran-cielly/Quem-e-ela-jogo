@@ -14,7 +14,13 @@ $(document).ready(function() {
                 "foto":""
             }),
             success: function(res){
-               
+                cod = resp.cod
+                if(cod === 404){
+                    alert(resp.mensagem)
+                }else if(cod === 200){
+                    alert("Cadastrado com sucesso")
+                    window.location.href = "/home"
+                }
             }
         })
         .done(function(msg){
@@ -37,16 +43,17 @@ $(document).ready(function() {
                 "nome": $('#nomeUsuario').val(),
                 "senha": $('#senhaUsuario').val(),
             }),
-            success: function(res){
-               
+            success: function(resp){
+                cod = resp.cod
+                if(cod === 404){
+                    alert("Usuário não encontrado")
+                }else if(cod === 200){
+                    alert("Logado com sucesso")
+                    window.location.href = "/home"
+                }
             }
         })
         .done(function(resp){
-            var msg = JSON.parse(resp);    
-            if(msg == 200){
-                window.location.href = "/home"
-            }
-        	
         })
         .fail(function(jqXHR, textStatus, msg){
             alert(msg);

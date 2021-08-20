@@ -1,5 +1,6 @@
 package br.com.QuemEla.view;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,9 @@ public class FuncoesUsuario {
 		if(nome!=null && dao.verificaNome(nome)) {
 			dao.salvarJogador(jogador);
 			
+			Jogador jogadorEncontrado = dao.getJogadorByEmail(nome, jogador.getSenha());
+			SessaoLogin.setJogadorLogado(jogadorEncontrado);
+			
 			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
 		}else{
 			return gson.toJson(ListaDeMensagens.getMensagem("nome usado"));
@@ -51,7 +55,7 @@ public class FuncoesUsuario {
 			}
 
 		} catch (Exception e) {
-			return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));
+			return gson.toJson(ListaDeMensagens.getMensagem("erro"));
 		}
 	}
 }

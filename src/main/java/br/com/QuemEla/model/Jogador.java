@@ -33,6 +33,7 @@ public class Jogador {
 		return nome;
 	}
 
+	@Column(unique = true)
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

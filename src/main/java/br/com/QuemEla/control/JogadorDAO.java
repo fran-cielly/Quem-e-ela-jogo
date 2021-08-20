@@ -1,5 +1,8 @@
 package br.com.QuemEla.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +21,17 @@ public class JogadorDAO {
 	
 	//retorna true se o nome não estiver cadastrado -  retorna false se o nome ja estiver cadastrado
 	public boolean verificaNome(String nome) {
-		Jogador jogador = null;
+		List<Jogador> lista = new ArrayList<Jogador>();
 		try {
-			jogador = (Jogador) manager.createQuery("SELECT j FROM Jogador j where j.nome= :nome ").setParameter("nome", nome).getSingleResult();
+			lista = manager.createQuery("SELECT j FROM Jogador j where j.nome= :nome ").setParameter("nome", nome).getResultList();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		if(jogador == null) {
-			return true;
-		}else {
+		
+		if(lista.size()>0) {
 			return false;
+		}else {
+			return true;
 		}
 	}
 
