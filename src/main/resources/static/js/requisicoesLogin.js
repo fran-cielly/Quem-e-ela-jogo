@@ -47,7 +47,7 @@ $(document).ready(function() {
                 cod = resp.cod
                 if(cod === 404){
                     alert("Usuário não encontrado")
-                }else if(cod === 200){
+                }else{
                     alert("Logado com sucesso")
                     window.location.href = "/home"
                 }

@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row max-row">
                 <div id="login" class="col-6 d-flex flex-column align-items-center">
                    
                     <div id="caixa-logo" class="w-50 d-flex flex-column">
@@ -19,28 +19,30 @@
                     </div>
 
                     <div class="p-2 col-7">
-                        <div id="form-login">
+                        <form id="form-cadastro" class="form-index"> 
                             <div>
                                 <label for="exampleInputEmail1">Escolha seu nome</label>
-                                <input type="text" class="form-control" id="nomeUsuarioCadastro" aria-describedby="name" required="required" minlength="2">
-                              </div>
-                              <br>
-                              <div class="form-group">
+                                <input type="text" class="form-control" id="nomeUsuarioCadastro" aria-describedby="name" required="required" minlength="2" autocomplete="off">
+                            </div>
+                            <br>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Escolha sua senha</label>
-                                <input type="password" class="form-control" id="senhaUsuarioCadastro" aria-describedby="senha" required="required" minlength="3">
-                              </div>
-                              <br>
-                              <button id="btn-cadastro" type="submit" class="btn-jogo btn btn-primary btn-lg btn-block bounce-in-left">Cadastrar-se</button>
-                        </div>
+                                <input type="password" class="form-control" id="senhaUsuarioCadastro" aria-describedby="senha" required="required" minlength="3" autocomplete="off">
+                            </div>
+                            <br>
+                            <button id="btn-cadastro" type="submit" class="btn-jogo btn btn-primary btn-lg btn-block bounce-in-left">Cadastrar-se</button>
+                        </form>
                     </div>
 
-                    <div class="p-2 ">
+                    <footer class="logo-ufabc col-12">
+                        <img src="css/img/ufabc-logo.png" alt="Logo Universidade Federal do ABC">
+                        <span>Universidade Federal do ABC</span>
+                    </footer>
 
-                    </div>
                 </div>
-                <div id="fundo" class="col-6 d-flex justify-content-end align-items-start">
+                <aside id="fundo-index" class="col-6 d-flex justify-content-end align-items-start">
                     <a href="/"><button id="btn-ir" type="button" class="btn btn-jogo">Entrar</button></a>
-                </div>
+                </aside>
             </div>
         </div>
     </body>
