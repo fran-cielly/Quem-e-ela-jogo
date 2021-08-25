@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.QuemEla.control.ListaDeMensagens;
 import br.com.QuemEla.model.Jogador;
-import br.com.QuemEla.sessao.SessaoLogin;
+import br.com.QuemEla.sessao.Sessao;
 
 @Controller
 public class Paginas {
@@ -17,7 +17,7 @@ public class Paginas {
 	//tela de login - index
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
-		Jogador jogador = SessaoLogin.getJogadorLogado();
+		Jogador jogador = Sessao.getJogadorLogado();
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -28,7 +28,7 @@ public class Paginas {
 	//tela de cadastro
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 	public ModelAndView cadastro() {
-		Jogador jogador = SessaoLogin.getJogadorLogado();
+		Jogador jogador = Sessao.getJogadorLogado();
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -39,7 +39,7 @@ public class Paginas {
 	//home do site
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
-		Jogador jogador = SessaoLogin.getJogadorLogado();
+		Jogador jogador = Sessao.getJogadorLogado();
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -50,7 +50,18 @@ public class Paginas {
 	//deslogar
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
 	public ModelAndView sair() {
-		SessaoLogin.setJogadorLogado(null);
+		Sessao.setJogadorLogado(null);
 		return new ModelAndView("index");	
+	}
+	
+	@RequestMapping(value = "/partida", method = RequestMethod.GET)
+	public ModelAndView partida() {
+
+		Jogador jogador = Sessao.getJogadorLogado();
+		if(jogador !=null) {
+			return new ModelAndView("partida");
+		}else {
+			return new ModelAndView("index");
+		}
 	}
 }

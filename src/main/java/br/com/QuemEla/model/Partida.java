@@ -1,11 +1,15 @@
 package br.com.QuemEla.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,6 +26,8 @@ public class Partida {
 	private Jogador jogador2;
 	private int pontuacao_jogador1;
 	private int pontuacao_jogador2;
+	@OneToMany
+	private List<Rodada> rodadas = new ArrayList<Rodada>();
 	
 	public int getId() {
 		return id;
@@ -58,5 +64,12 @@ public class Partida {
 	}
 	public void setPontuacao_jogador2(int pontuacao_jogador2) {
 		this.pontuacao_jogador2 = pontuacao_jogador2;
+	}
+	public List<Rodada> getRodadas() {
+		return rodadas;
+	}
+	public void setRodadas(List<Rodada> rodadas) {
+		this.rodadas = rodadas;
 	}	
 }
+

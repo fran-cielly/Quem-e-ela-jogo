@@ -12,7 +12,7 @@ import br.com.QuemEla.control.JogadorDAO;
 import br.com.QuemEla.control.ListaDeMensagens;
 import br.com.QuemEla.model.Jogador;
 import br.com.QuemEla.model.Mensagem;
-import br.com.QuemEla.sessao.SessaoLogin;
+import br.com.QuemEla.sessao.Sessao;
 
 @RestController
 public class FuncoesUsuario {
@@ -32,7 +32,7 @@ public class FuncoesUsuario {
 			dao.salvarJogador(jogador);
 			
 			Jogador jogadorEncontrado = dao.getJogadorByEmail(nome, jogador.getSenha());
-			SessaoLogin.setJogadorLogado(jogadorEncontrado);
+			Sessao.setJogadorLogado(jogadorEncontrado);
 			
 			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
 		}else{
@@ -48,7 +48,7 @@ public class FuncoesUsuario {
 			Jogador jogador = dao.getJogadorByEmail(jogadorlogin.getNome(), jogadorlogin.getSenha());
 			
 			if(jogador != null) {
-				SessaoLogin.setJogadorLogado(jogador);
+				Sessao.setJogadorLogado(jogador);
 				return gson.toJson(jogador);
 			}else {
 				return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));

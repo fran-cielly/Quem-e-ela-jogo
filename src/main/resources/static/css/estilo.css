@@ -36,6 +36,10 @@ textarea:focus, input:focus, select:focus{
     outline: 0 !important;
 } 
 
+.row{
+	margin:0 !important;
+}
+
 .container-fluid{
     height: 100%;
     content-visibility: auto;
@@ -69,7 +73,6 @@ textarea:focus, input:focus, select:focus{
     border: 2px solid #796667;
     padding-left: 5px !important;
 }
-
 
 .form-index input:hover, .form-index input:focus{
     box-shadow:  9px 9px 18px #737373,
@@ -124,29 +127,14 @@ textarea:focus, input:focus, select:focus{
     color: #796667;
 }
 
-/*Estilos tela home*/
-
-#fundo-cor{
-    background-image: url(img/fundo-quimica.png);
-    background-size: cover;
-    background-position: center;
-    background-color:#3A1948;
-}
-
-#fundo-home{
-    /*background-image: url(img/computer-woman.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-size: 100%;
-    background-position: bottom;*/
-}
+/*Estilos header*/
 
 .row-header{
     height: 8%;
 }
 
 header{
-    background-color: blue;
+    padding: 10px 30px 0 30px !important;
 }
 
 .row-caixa{
@@ -157,5 +145,100 @@ header{
     height: 100%;
 }
 
+.btn-header{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 5px solid white;
+}
 
+.btn-header img{
+    width: 15px;
+}
 
+#caixa-btn-header{
+    width: 13%;
+}
+
+#btn-som{
+    background-color: #EA3294;
+}
+
+#btn-help{
+    background-color: #FCA532;
+}
+
+#btn-sair{
+    background-color: #DF1225;
+}
+
+/*Estilos tela home*/
+
+#fundo-home{
+    background-image: url(img/fundo-quimica.png);
+    background-size: cover;
+    background-position: center;
+    background-color:#3A1948;
+}
+
+#fundo-aside{
+    /*background-image: url(img/fundo-quimica.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;*/
+}
+
+.btn-menu{
+    border: 5px solid white;
+    background-image: url(img/eXpresso.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 20px !important;
+    color: white;
+    font-size: 18px;
+    padding: 5px !important;
+    cursor: pointer;
+}
+
+.btn-menu:hover{
+    background-image: url(img/Sunrise.jpg);
+
+}
+
+#img-perfil{
+    width: 220px;
+    height: 220px;
+    margin-top: 65px !important;
+    margin-bottom: 30px !important;
+    border: 10px solid white;
+    background-image: url(img/menina.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+}
+
+/*Estilo tela de partida*/
+
+#caixa-personagem{
+    height: 80%;
+    background-color: aquamarine;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: start;
+}
+
+.card-personagem{
+    height: 100px;
+    background-color: #DF1225;
+    flex: 0 0 auto;
+    margin: 10px;
+}
+
+#caixa-menu-jogo{
+    background-color: #EA3294;
+    height: 80%;
+}
