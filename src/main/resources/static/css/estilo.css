@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
 
 *{
     margin: 0 !important;
@@ -220,25 +221,54 @@ header{
 
 /*Estilo tela de partida*/
 
+#fundo-partida{
+    background-color:#3A1948;
+}
+
+#container-caixa-personagem{
+    padding: 50px !important;
+}
+
 #caixa-personagem{
-    height: 80%;
-    background-color: aquamarine;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: stretch;
-    align-content: start;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+#caixa-personagem .row{
+    margin-bottom: 15px !important;
 }
 
 .card-personagem{
-    height: 100px;
-    background-color: #DF1225;
-    flex: 0 0 auto;
-    margin: 10px;
+    height: 150px;
+    border-radius: 15px;
+    border:5px solid white;
+    background-color: white;
+    text-align: center;
+    content-visibility: auto;
+    cursor: pointer;
+}
+
+.card-personagem img{
+    max-height: 85%;
+}
+.card-personagem p{
+    height: 15%;
+    background-color: white;
+    text-align: center;
+    font-family: 'Nunito';
+    font-size: 14px;
 }
 
 #caixa-menu-jogo{
-    background-color: #EA3294;
-    height: 80%;
+    padding: 50px 25px 30px 0 !important;
+}
+
+#time{
+    height: 10vh;
+    font-family: 'Roboto Mono', monospace;
+    background: white;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 5px;
 }

@@ -9,7 +9,29 @@
         <link rel="stylesheet" href="css/hover.css">
     </head>
     <body>
+        <!--Modal de tutorial que abre antes da partida começar-->
+        <div class="modal fade" id="modal-tutorial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    Tutorial
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Começar jogo</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
         <div id="fundo-partida" class="container-fluid">
+
+          
 
             <header class="row row-header justify-content-between">
                 <div class="col-2">
@@ -29,26 +51,15 @@
             </header>
 
             <div class="row">
-                <div id="caixa-personagem" class="col-9">
-                   
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                  
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                   
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                        <div class="col-3 card-personagem"></div>
-                  
+                <div id="container-caixa-personagem" class="col-9">
+                    <div id="caixa-personagem">
+                        <!--As caixas de personagens são inseridas aqui por meio do js-->
+                    </div>
                 </div>
-                <div id="caixa-menu-jogo" class="col-2 offset-1">
-
+                <div id="caixa-menu-jogo" class="col-3">
+                    <div id="time">11:00</div>
+                    <button id="perguntar" class="btn btn-menu btn-lg btn-block">Fazer uma pergunta</button>
+                    <button id="perguntar" class="btn btn-menu btn-lg btn-block">Fazer uma tentativa</button>
                 </div>
             </div>
 
