@@ -1,9 +1,6 @@
 package br.com.QuemEla.view;
 
 import org.springframework.web.bind.annotation.PostMapping;
-
-
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +9,7 @@ import com.google.gson.Gson;
 import br.com.QuemEla.control.ListaDeMensagens;
 import br.com.QuemEla.control.PerguntaDAO;
 import br.com.QuemEla.model.Categoria;
+import br.com.QuemEla.model.Entrada;
 import br.com.QuemEla.model.Pergunta;
 
 @RestController
@@ -37,14 +35,16 @@ public class FuncoesPergunta {
 		}
 	}
 	
+	
 	@PostMapping(path="/pergunta/listar", produces= { "application/json" })
 	public String listarPerguntas() {
 		return gson.toJson(pdao.listarPerguntas());
 	}
 	
 	@PostMapping(path="/pergunta/listar/categoria", produces= { "application/json" })
-	public String listarPerguntas(@RequestBody int categoria) {
-		return gson.toJson(pdao.listarPerguntasByCategoria(categoria));
+	public String listarPerguntas(@RequestBody Entrada entrada) {
+		System.out.println("categoria: "+entrada.getId());
+		return gson.toJson(pdao.listarPerguntasByCategoria(entrada.getId()));
 	}
 	
 	//categoria
