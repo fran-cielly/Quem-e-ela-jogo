@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.QuemEla.model.Categoria;
 import br.com.QuemEla.model.Pergunta;
+import br.com.QuemEla.model.PerguntaPersonagem;
 import br.com.QuemEla.model.Personagem;
 
 public class PerguntaDAO {
@@ -36,6 +37,28 @@ public class PerguntaDAO {
 			e.printStackTrace();
 		}
 		return lista;
+	}
+	
+	public String getRespostaPergunta(Pergunta pergunta, Personagem personagem) {
+
+		String resposta = "";
+		
+		try {
+		
+			PerguntaPersonagem r = (PerguntaPersonagem) manager.createQuery("SELECT r FROM PerguntaPersonagem r WHERE r.pergunta = :pergunta AND r.personagem =: personagem")
+					.setParameter("pergunta", pergunta).setParameter("personagem", personagem).getSingleResult();
+			
+			resposta = r.getResposta();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resposta;
+	}
+	
+	public Pergunta getPerguntaById(int id) {
+		Pergunta pergunta = manager.find(Pergunta.class, id);
+		return pergunta;
 	}
 	
 	public Pergunta getPerguntaAleatoria() {

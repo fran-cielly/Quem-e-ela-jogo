@@ -39,7 +39,7 @@
                 <div id="caixa-menu-jogo" class="col-3">
                     <div id="time">11:00</div>
                     <button id="btn-modal-perguntar" class="btn btn-menu btn-lg btn-block" data-toggle="modal" data-target="#modal-perguntas"> Fazer uma pergunta</button>
-                    <button class="btn btn-menu btn-lg btn-block">Fazer uma tentativa</button>
+                    <button id="btn-tentativa" class="btn btn-menu btn-lg btn-block">Fazer uma tentativa</button>
                 </div>
             </div>
         </div>
@@ -80,12 +80,32 @@
                             <!--As perguntas são inseridas aqui por meio do js-->
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Escolher</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de resposta-->
+        <div class="modal fade" id="modal-resposta" tabindex="-1" aria-labelledby="modal-resposta" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="resposta-titulo"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="resposta-texto">
+                            <!--resposta inserida pelo js-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-menu btn-lg btn-block" data-bs-dismiss="modal-resposta">Entendi</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </body>
     <script src="js/funcoesPartida.js"></script>
 </html>

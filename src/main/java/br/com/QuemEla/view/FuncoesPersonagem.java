@@ -29,5 +29,4 @@ public class FuncoesPersonagem {
 	public String getPersonagemAleatorio() {
 		return gson.toJson(pdao.getPersonagemAleatorio());
 	}
-	
 }
