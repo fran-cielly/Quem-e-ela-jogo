@@ -61,14 +61,15 @@ public class FuncoesPartida {
 		
 		Rodada rodadaAtual = Sessao.getRodadaAtual();
 		
-		if(rodadaAtual.getPergunta() == null){
+		/*Uma rodada tem 3 perguntas*/
+		if(rodadaAtual.getPergunta().size()<3){
 		
 			Pergunta pergunta = pergdao.getPerguntaById(entrada.getId());
 
 			Personagem personagem = rodadaAtual.getFigura_misteriosa();
 			String resposta = pergdao.getRespostaPergunta(pergunta, personagem);
 			
-			rodadaAtual.setPergunta(pergunta);
+			rodadaAtual.getPergunta().add(pergunta);
 				
 			return gson.toJson(resposta);
 		}else {

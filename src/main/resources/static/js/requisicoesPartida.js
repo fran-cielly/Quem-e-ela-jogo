@@ -11,7 +11,6 @@ $(document).ready(function() {
         });
         //funcao para enviar a pergunta
         $(".pergunta").click(function(){
-            alert("aaaaa");
             var idPergunta = $(this).attr("idpergunta");
             var textoPergunta = $(this).html();
 
@@ -27,7 +26,7 @@ $(document).ready(function() {
                 success: function(resp){
 
                     if(resp.cod!=null && resp.cod == 400){
-
+                        alert(resp.mensagem);
                     }else{
                         $("#modal-perguntas").modal('hide');
 
@@ -92,6 +91,8 @@ $(document).ready(function() {
                             $(this).addClass("card-personagem-removido");
                         }
                     }else{
+                        fazerTentativa = false;
+                        alert("fazendo tentativa");
                         $.ajax({
                             url : "/pergunta/tentativa",
                             method : "POST",
@@ -101,7 +102,7 @@ $(document).ready(function() {
                                 "id": $(this).attr("codPersonagem")
                             }),
                             success: function(resp){
-                                alert(resp.msg);
+                                alert("respostas"+resp.msg);
                             }
                         })
                         .done(function(resp){

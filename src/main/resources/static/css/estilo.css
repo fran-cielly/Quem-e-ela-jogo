@@ -299,7 +299,7 @@ header{
     border-radius: 5px;
     font-family: 'Nunito';
     margin-bottom: 3px;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .pergunta:hover{

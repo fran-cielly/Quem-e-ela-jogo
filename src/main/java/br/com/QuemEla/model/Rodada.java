@@ -1,5 +1,8 @@
 package br.com.QuemEla.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +22,8 @@ public class Rodada {
 	private Partida id_partida;
 	@OneToOne
 	private Personagem figura_misteriosa;
-	@OneToOne
-	private Pergunta pergunta;
+	@OneToMany
+	private List<Pergunta> pergunta = new ArrayList<Pergunta>();
 	private int pontuacao_jogador1;
 	private int pontuacao_jogador2;
 	
@@ -54,10 +57,10 @@ public class Rodada {
 	public void setFigura_misteriosa(Personagem figura_misteriosa) {
 		this.figura_misteriosa = figura_misteriosa;
 	}
-	public Pergunta getPergunta() {
+	public List<Pergunta> getPergunta() {
 		return pergunta;
 	}
-	public void setPergunta(Pergunta pergunta) {
+	public void setPergunta(List<Pergunta> pergunta) {
 		this.pergunta = pergunta;
 	}
 }
