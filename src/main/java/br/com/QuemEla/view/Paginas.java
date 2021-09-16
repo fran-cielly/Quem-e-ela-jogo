@@ -64,4 +64,16 @@ public class Paginas {
 			return new ModelAndView("index");
 		}
 	}
+	
+	
+	@RequestMapping(value = "/galeria", method = RequestMethod.GET)
+	public ModelAndView galeria() {
+
+		Jogador jogador = Sessao.getJogadorLogado();
+		if(jogador !=null) {
+			return new ModelAndView("galeria");
+		}else {
+			return new ModelAndView("index");
+		}
+	}
 }
