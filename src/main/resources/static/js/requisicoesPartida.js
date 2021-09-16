@@ -1,9 +1,14 @@
 $(document).ready(function() {
 
+    //modal com o tutorial do jogo
+    $("#modal-entrada").modal('show');
+
+    //Quando o jogador clicar na carta ela sera desabilitada caso esa varivel seja false
     var fazerTentativa = false;
 
-     //funcao para listar as perguntas dentro da div
-     function listarPerguntar(resp){
+    //funcoes que criam os elementos da tela
+    //funcao para listar as perguntas dentro da div
+    function listarPerguntar(resp){
         var lista = Object.values(resp);
         $("#listar-perguntas").html("");
         lista.forEach(pergunta =>{
@@ -44,8 +49,9 @@ $(document).ready(function() {
                 //alert(msg);
             });
         });
-     }
-
+    }
+   
+    
     //Começar nova partida
     $.ajax({
         url : "/partida/nova",
@@ -83,6 +89,8 @@ $(document).ready(function() {
                 caixas+="</div>"
                 $("#caixa-personagem").append(caixas);
 
+                //funcao quando o jogador clica em alguma personagem, normalmente ele desabilita a cara, caso ele clique em fazer uma tentativa
+                //de acertar entao o valor da variavel fazerTentativa mudara para true
                 $(".card-personagem").click(function(){
                     if(fazerTentativa == false){
                         if($(this).hasClass("card-personagem-removido")){
@@ -125,6 +133,25 @@ $(document).ready(function() {
         //alert(msg);
     });
 
+     //Começar nova rodada
+    function novaRodada(){
+        $.ajax({
+            url : "/rodada/nova",
+            method : "GET",
+            contentType : 'application/json',
+            dataType : 'json',
+            success: function(resp){
+                
+            }
+        })
+        .done(function(resp){
+            //alert(resp)
+        })
+        .fail(function(jqXHR, textStatus, msg){
+            //alert(msg);
+        });
+    }
+
     //Clicar no botao para fazer uma tentativa de acertar uma figura misteriosa
     $("#btn-tentativa").click(function(){
         fazerTentativa = true;
@@ -153,7 +180,7 @@ $(document).ready(function() {
     });
 
      //Listar perguntas quando trocar de categoria
-     $(".card-categoria").click(function(){
+    $(".card-categoria").click(function(){
 
         $.ajax({
             url : "/pergunta/listar/categoria",

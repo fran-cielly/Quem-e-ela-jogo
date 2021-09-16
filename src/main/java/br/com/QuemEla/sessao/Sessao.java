@@ -29,4 +29,16 @@ public class Sessao {
 	public static Rodada getRodadaAtual() {
 		return rodadaAtual;
 	}
+	
+	public static void setRodadaAtual(Rodada rodada) {
+		rodadaAtual = rodada;
+	}
+	
+	public static void proxRodada() {
+		int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
+		
+		Rodada novaRodada = partidaAtual.getRodadas().get(posicao);
+		
+		Sessao.setRodadaAtual(novaRodada);
+	}
 }

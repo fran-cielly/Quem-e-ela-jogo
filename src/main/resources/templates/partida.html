@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/hover.css">
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/contador.js"></script>
         <script src="js/requisicoesPartida.js"></script>
     </head>
     <body>
@@ -24,7 +25,7 @@
                     <button id="btn-help" class="btn btn-header">
                         <img src="css/img/interrogation.png">
                     </button>
-                    <button id="btn-sair" class="btn btn-header">
+                    <button id="btn-sair" class="btn btn-header" href="/sair">
                         <img src="css/img/close.png">
                     </button>
                 </div>
@@ -37,13 +38,16 @@
                     </div>
                 </div>
                 <div id="caixa-menu-jogo" class="col-3">
-                    <div id="time">11:00</div>
+                    <div id="time">
+                        <span id="minutos">00</span>:<span id="segundos">00</span>
+                    </div>
                     <button id="btn-modal-perguntar" class="btn btn-menu btn-lg btn-block" data-toggle="modal" data-target="#modal-perguntas"> Fazer uma pergunta</button>
                     <button id="btn-tentativa" class="btn btn-menu btn-lg btn-block">Fazer uma tentativa</button>
                 </div>
             </div>
         </div>
-          <!-- Modal -->
+
+        <!-- Modal -->
         <div class="modal fade" id="modal-perguntas" tabindex="-1" aria-labelledby="modal-perguntas" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -56,21 +60,23 @@
                     <div class="modal-body">
                         <div class="row mx-md-n2">
                             <div class="col-3 px-md-2">
-                                <div class="card-categoria" categoria="1">
+                                <div class="card-categoria shadow " categoria="1">
+                                    <img src="css/img/born.png">
                                     <p>Nascimento</p>
                                 </div>
                             </div>
-                            <div class="col-3 px-md-5">
+                            <div class="col-3 px-md-2">
                                 <div class="card-categoria" categoria="2">
+                                    <img src="css/img/book.png">
                                     <p>Estudo</p>
                                 </div>
                             </div>
-                            <div class="col-3 px-md-5" >
+                            <div class="col-3 px-md-2" >
                                 <div class="card-categoria" categoria="3">
                                     <p>Estudo</p>
                                 </div>
                             </div>
-                            <div class="col-3 px-md-5">
+                            <div class="col-3 px-md-2">
                                 <div class="card-categoria" categoria="4">
                                     <p>Estudo</p>
                                 </div>
@@ -84,7 +90,7 @@
             </div>
         </div>
 
-        <!-- Modal de resposta-->
+        <!-- Modal de resposta -->
         <div class="modal fade" id="modal-resposta" tabindex="-1" aria-labelledby="modal-resposta" aria-hidden="true" >
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -100,6 +106,94 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-menu btn-lg btn-block" data-dismiss="modal">Entendi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de entrada -->
+        <div class="modal fade " id="modal-rodada-acabou" tabindex="-1" aria-labelledby="modal-rodada-acabou" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">O tempo acabou!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Preste atenção no tempo! Lembre-se que cada rodada dura 3 minutos
+                            <br>
+                            Você não acertou a figura misteriosa antes do tempo acabar, então não pontuou
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Começar próxima rodada</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de entrada -->
+        <div class="modal fade " id="modal-acertou" tabindex="-1" aria-labelledby="modal-acertou" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Parabéns!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Parabéns! Você acertou a figura misteriosa
+                            <br>
+                            Você conseguiu acertar a figura misteriosa dentro do tempo, então ganhou 100 pontos
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Começar próxima rodada</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal de entrada -->
+         <div class="modal fade " id="modal-errou" tabindex="-1" aria-labelledby="modal-errou" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Parabéns!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Que pena...
+                            <br>
+                            Você não conseguiu acertar a figura misteriosa, você pode ler a biografia das personagens na galeria no menu
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Começar próxima rodada</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal de entrada -->
+         <div class="modal fade modal-fullscreen" id="modal-entrada" tabindex="-1" aria-labelledby="modal-entrada" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Bem vindo a partida!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Começar</button>
                         </div>
                     </div>
                 </div>
