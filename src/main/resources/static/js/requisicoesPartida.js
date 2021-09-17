@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     //Quando o jogador clicar na carta ela sera desabilitada caso esa varivel seja false
     var fazerTentativa = false;
+    var rodada = 0;
 
     //funcoes que criam os elementos da tela
     //funcao para listar as perguntas dentro da div
@@ -97,20 +98,26 @@ $(document).ready(function() {
                             $(this).removeClass("card-personagem-removido");
                         }else{
                             $(this).addClass("card-personagem-removido");
+                            alertify.message("Personagem abaixado com sucesso");
                         }
                     }else{
                         fazerTentativa = false;
-                        alert("fazendo tentativa");
+
                         $.ajax({
-                            url : "/pergunta/tentativa",
+                            url : "/partida/tentativa",
                             method : "POST",
                             contentType : 'application/json',
                             dataType : 'json',
                             data : JSON.stringify({
-                                "id": $(this).attr("codPersonagem")
+                                "id": $(this).attr("codpersonagem")
                             }),
                             success: function(resp){
-                                alert("respostas"+resp.msg);
+                                novaRodada();
+                                if(resp.cod == 1){
+                                    $("#modal-acertou").modal('show');
+                                }else{
+                                    $("#modal-errou").modal('show');
+                                }
                             }
                         })
                         .done(function(resp){
@@ -119,7 +126,6 @@ $(document).ready(function() {
                         .fail(function(jqXHR, textStatus, msg){
                             //alert(msg);
                         });
-
                     }
                 });
             }
@@ -133,15 +139,24 @@ $(document).ready(function() {
         //alert(msg);
     });
 
-     //Começar nova rodada
+    //Começar nova rodada
     function novaRodada(){
+        pauseContador();
+        resetContador();
+
+        $(".card-personagem").removeClass("card-personagem-removido");
+
         $.ajax({
             url : "/rodada/nova",
             method : "GET",
             contentType : 'application/json',
             dataType : 'json',
             success: function(resp){
-                
+                if(rodada == 3){
+                    $("#modal-fim-jogou").modal('show');
+                }else{
+                    rodada++;
+                }
             }
         })
         .done(function(resp){
@@ -154,6 +169,7 @@ $(document).ready(function() {
 
     //Clicar no botao para fazer uma tentativa de acertar uma figura misteriosa
     $("#btn-tentativa").click(function(){
+        alertify.message("Personagem abaixado com sucesso");
         fazerTentativa = true;
     });
 

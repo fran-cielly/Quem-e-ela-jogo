@@ -33,9 +33,6 @@ function contador(){
     }
 
     if(minutos == 3){
-        pauseContador();
-        resetContador();
-
         $("#modal-rodada-acabou").modal('show');
         novaRodada();
     }

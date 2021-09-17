@@ -101,4 +101,13 @@ public class FuncoesPartida {
 		}
 		
 	}
+	
+	@GetMapping(path = "/partida/fim", produces= { "application/json"})
+	public String fimPartida() {
+		Partida partida = Sessao.getPartida();
+		Sessao.setPartida(null);
+		Sessao.setRodadaAtual(null);
+		
+		return gson.toJson(partida);
+	}
 }

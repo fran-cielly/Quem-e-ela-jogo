@@ -7,10 +7,12 @@
         <link href="css/estilo.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="css/hover.css">
+        <link rel="stylesheet" href="css/alertify.min.css">
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/contador.js"></script>
         <script src="js/requisicoesPartida.js"></script>
+        <script src="js/alertify.min.js"></script>
     </head>
     <body>
         <div id="fundo-partida" class="container-fluid">
@@ -43,6 +45,7 @@
                     </div>
                     <button id="btn-modal-perguntar" class="btn btn-menu btn-lg btn-block" data-toggle="modal" data-target="#modal-perguntas"> Fazer uma pergunta</button>
                     <button id="btn-tentativa" class="btn btn-menu btn-lg btn-block">Fazer uma tentativa</button>
+                    <div id="caixa-pontos"><span id="pontos">0</span>pontos</div>
                 </div>
             </div>
         </div>
@@ -91,7 +94,7 @@
         </div>
 
         <!-- Modal de resposta -->
-        <div class="modal fade" id="modal-resposta" tabindex="-1" aria-labelledby="modal-resposta" aria-hidden="true" >
+        <div class="modal fade" id="modal-resposta" tabindex="-1" aria-labelledby="modal-resposta" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -113,7 +116,7 @@
         </div>
 
         <!-- Modal de entrada -->
-        <div class="modal fade " id="modal-rodada-acabou" tabindex="-1" aria-labelledby="modal-rodada-acabou" aria-hidden="true">
+        <div class="modal fade " id="modal-rodada-acabou" tabindex="-1" aria-labelledby="modal-rodada-acabou" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -137,7 +140,7 @@
         </div>
 
         <!-- Modal de entrada -->
-        <div class="modal fade " id="modal-acertou" tabindex="-1" aria-labelledby="modal-acertou" aria-hidden="true">
+        <div class="modal fade " id="modal-acertou" tabindex="-1" aria-labelledby="modal-acertou" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -160,12 +163,12 @@
             </div>
         </div>
 
-         <!-- Modal de entrada -->
-         <div class="modal fade " id="modal-errou" tabindex="-1" aria-labelledby="modal-errou" aria-hidden="true">
+        <!-- Modal de entrada -->
+        <div class="modal fade " id="modal-errou" tabindex="-1" aria-labelledby="modal-errou" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Parabéns!</h5>
+                        <h5 class="modal-title">Você errou!</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -185,7 +188,7 @@
         </div>
 
          <!-- Modal de entrada -->
-         <div class="modal fade modal-fullscreen" id="modal-entrada" tabindex="-1" aria-labelledby="modal-entrada" aria-hidden="true">
+         <div class="modal fade modal-fullscreen" id="modal-entrada" tabindex="-1" aria-labelledby="modal-entrada" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -200,6 +203,21 @@
             </div>
         </div>
 
+        <!-- Modal de fim de jogo -->
+        <div class="modal fade" id="modal-fim-jogo" tabindex="-1" aria-labelledby="modal-fim-jogo" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">A partida acabou!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <a href="/home"><button type="button" class="btn btn-menu btn-lg btn-block btn-comecar">Voltar ao menu</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="js/funcoesPartida.js"></script>
 </html>

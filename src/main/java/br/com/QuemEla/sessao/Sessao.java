@@ -38,7 +38,6 @@ public class Sessao {
 		int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
 		
 		Rodada novaRodada = partidaAtual.getRodadas().get(posicao);
-		
 		Sessao.setRodadaAtual(novaRodada);
 	}
 }

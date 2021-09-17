@@ -19,7 +19,7 @@ public class ListaDeMensagens {
 		listaMensagens.put("erro", new Mensagem(400, "Erro"));
 		listaMensagens.put("sair", new Mensagem(400, "Usuário deslogado com sucesso"));
 		listaMensagens.put("perguntas da rodada acabaram", new Mensagem(400, "Apenas 3 perguntas por rodada!"));
-		listaMensagens.put("acertou personagem", new Mensagem(0, "Parabéns! Você acertou a figura misteriosa"));
+		listaMensagens.put("acertou personagem", new Mensagem(1, "Parabéns! Você acertou a figura misteriosa"));
 		listaMensagens.put("errou personagem", new Mensagem(0, "Que pena! Você errou a figura misteriosa"));
 	}
 	public static Mensagem getMensagem(String mensagem) {
