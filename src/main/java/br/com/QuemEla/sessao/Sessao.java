@@ -37,7 +37,11 @@ public class Sessao {
 	public static void proxRodada() {
 		int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
 		
-		Rodada novaRodada = partidaAtual.getRodadas().get(posicao);
-		Sessao.setRodadaAtual(novaRodada);
+		System.out.println("posição = "+posicao);
+		
+		if(posicao < 2) {
+			Rodada novaRodada = partidaAtual.getRodadas().get(posicao+1);
+			Sessao.setRodadaAtual(novaRodada);
+		}
 	}
 }

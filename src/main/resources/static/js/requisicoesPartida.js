@@ -146,61 +146,58 @@ $(document).ready(function() {
 
         $(".card-personagem").removeClass("card-personagem-removido");
 
-        $.ajax({
-            url : "/rodada/nova",
-            method : "GET",
-            contentType : 'application/json',
-            dataType : 'json',
-            success: function(resp){
-                if(rodada == 3){
-                    
-                    //finalizar partida ao fim da 3 rodada
-                    $.ajax({
-                        url : "/partida/fim",
-                        method : "GET",
-                        contentType : 'application/json',
-                        dataType : 'json',
-                        success: function(resp){
-                            var partida = JSON.parse(resp);
+        if(rodada == 3){
+            //finalizar partida ao fim da 3 rodada
+            $.ajax({
+                url : "/partida/fim",
+                method : "GET",
+                contentType : 'application/json',
+                dataType : 'json',
+                success: function(resp){
+                    var partida = JSON.parse(resp);
 
-                            var info = "";
+                    var info = "";
 
-                            info+="Jogador: "+partida.jogador1;
-                            info+="Pontuação: "+partida.pontuacao_jogador1;
-                            info+="Rodadas: ";
+                    info+="Jogador: "+partida.jogador1;
+                    info+="Pontuação: "+partida.pontuacao_jogador1;
+                    info+="Rodadas: ";
 
-                            var lista = Object.values(partida.rodadas);
+                    var lista = Object.values(partida.rodadas);
 
-                            lista.forEach(rodada =>{
-                                info+="Rodada:";
-                                info+="Pergunta:"+rodada.pergunta;
-                                info+="Figura misteriosa"+rodada.figura_misteriosa;
-                                info+="Pontuação"+rodada.pontuacao_jogador1;
-                            });
-
-                            $("#info-fim-jogo").append(info);
-                        }
-                    })
-                    .done(function(resp){
-                        //alert(resp)
-                    })
-                    .fail(function(jqXHR, textStatus, msg){
-                        //alert(msg);
+                    lista.forEach(rodada =>{
+                        info+="Rodada:";
+                        info+="Pergunta:"+rodada.pergunta;
+                        info+="Figura misteriosa"+rodada.figura_misteriosa;
+                        info+="Pontuação"+rodada.pontuacao_jogador1;
                     });
 
+                    $("#info-fim-jogo").append(info);
                     $("#modal-fim-jogou").modal('show');
-                
-                }else{
+                }
+            })
+            .done(function(resp){
+                //alert(resp)
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                //alert(msg);
+            });
+        }else{
+            $.ajax({
+                url : "/rodada/nova",
+                method : "GET",
+                contentType : 'application/json',
+                dataType : 'json',
+                success: function(resp){
                     rodada++;
                 }
-            }
-        })
-        .done(function(resp){
-            //alert(resp)
-        })
-        .fail(function(jqXHR, textStatus, msg){
-            //alert(msg);
-        });
+            })
+            .done(function(resp){
+                //alert(resp)
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                //alert(msg);
+            });
+        }
     }
 
     //Clicar no botao para fazer uma tentativa de acertar uma figura misteriosa

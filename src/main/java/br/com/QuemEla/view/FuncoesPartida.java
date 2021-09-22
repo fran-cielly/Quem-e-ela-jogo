@@ -66,6 +66,8 @@ public class FuncoesPartida {
 		
 		Rodada rodadaAtual = Sessao.getRodadaAtual();
 		
+		System.out.println(rodadaAtual);
+		
 		/*Uma rodada tem 3 perguntas*/
 		if(rodadaAtual.getPergunta().size()<3){
 		
@@ -90,7 +92,6 @@ public class FuncoesPartida {
 		
 		Personagem personagemRodada = rodadaAtual.getFigura_misteriosa();
 		
-		Sessao.proxRodada();
 		if(personagemRodada.getId() == entrada.getId()) {
 			rodadaAtual.setPontuacao_jogador1(100);
 			return gson.toJson(ListaDeMensagens.getMensagem("acertou personagem"));
@@ -99,7 +100,6 @@ public class FuncoesPartida {
 			rodadaAtual.setPontuacao_jogador1(0);
 			return gson.toJson(ListaDeMensagens.getMensagem("errou personagem"));
 		}
-		
 	}
 	
 	@GetMapping(path = "/partida/fim", produces= { "application/json"})

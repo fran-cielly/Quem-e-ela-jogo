@@ -35,7 +35,6 @@ public class FuncoesPergunta {
 		}
 	}
 	
-	
 	@PostMapping(path="/pergunta/listar", produces= { "application/json" })
 	public String listarPerguntas() {
 		return gson.toJson(pdao.listarPerguntas());
