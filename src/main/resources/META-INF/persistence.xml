@@ -12,7 +12,7 @@
             <property name="javax.persistence.jdbc.user" value="rxvofxxpshsufm" /> <!-- DB User -->
             <property name="javax.persistence.jdbc.password" value="59d4457d9fc4e82bc7a3bf2bd78b2ebd459a393da7597275b177674ba9011802" /> <!-- DB Password -->
 
-	    	<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> <!-- DB Dialect -->
+	    	<!--   <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> DB Dialect -->
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
             
             <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
