@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class EntityFactory {
-	static EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence.xml");
+	static EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence");
 	
 	static EntityManager manager = factory.createEntityManager();
 	
