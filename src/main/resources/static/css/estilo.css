@@ -52,7 +52,7 @@ textarea:focus, input:focus, select:focus{
 
 /*Estilos tela de login-cadastro*/
 #fundo-index{
-    background-image:url("img/fundo-roxo-mulher-2.jpg");
+    background-image:url(img/fundo-roxo-mulher-2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -216,16 +216,24 @@ header{
 /*Estilo tela de partida*/
 
 #fundo-partida{
-    background-color:#3A1948;
+    /*background-color:#3A1948;*/
+    background-image: url(img/fundo-roxo-mulher.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #container-caixa-personagem{
-    padding: 50px !important;
+    padding: 0px 20px !important;
 }
 
 #caixa-personagem{
     overflow-y: auto;
-    max-height: 500px;
+    max-height: 550px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    min-height: 550px;
 }
 
 #caixa-personagem .row{
@@ -234,11 +242,13 @@ header{
 
 .card-personagem{
     height: 150px;
-    border-radius: 15px;
-    border:5px solid white;
-    background-color: white;
-    text-align: center;
     content-visibility: auto;
+    text-align: center;
+    background: url(img/colorful-waves.jpg);
+    background-size: cover;
+    border:5px solid white;
+    border-radius: 15px;
+    padding: 5px;
     cursor: pointer;
 }
 
