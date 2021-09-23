@@ -8,7 +8,7 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgres://rxvofxxpshsufm:59d4457d9fc4e82bc7a3bf2bd78b2ebd459a393da7597275b177674ba9011802@ec2-54-156-60-12.compute-1.amazonaws.com:5432/d19euldq4lgr1u" /> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-156-60-12.compute-1.amazonaws.com:5432/d19euldq4lgr1u" /> <!-- BD Mane -->
             <property name="javax.persistence.jdbc.user" value="rxvofxxpshsufm" /> <!-- DB User -->
             <property name="javax.persistence.jdbc.password" value="59d4457d9fc4e82bc7a3bf2bd78b2ebd459a393da7597275b177674ba9011802" /> <!-- DB Password -->
 
