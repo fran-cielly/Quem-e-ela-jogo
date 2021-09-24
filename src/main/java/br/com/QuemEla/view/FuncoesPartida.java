@@ -2,6 +2,7 @@ package br.com.QuemEla.view;
 
 import java.util.GregorianCalendar;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +32,8 @@ public class FuncoesPartida {
 	PerguntaDAO pergdao = new PerguntaDAO();
 	
 	@GetMapping(path = "/partida/nova", produces= { "application/json"})
-	public String getPartida() {
-		Partida partidaAtual = Sessao.getPartida();
+	public String getPartida(HttpServletRequest request) {
+		Partida partidaAtual = Sessao.getPartida(request);
 		
 		//Se não existir uma partida em andamento uma será criada
 		if(partidaAtual == null) {
@@ -45,10 +46,10 @@ public class FuncoesPartida {
 				partida.getRodadas().add(rodada);
 			}
 			partida.setData_hora_jogo(date.getTime());
-			partida.setJogador1(Sessao.getJogadorLogado());
+			partida.setJogador1(Sessao.getJogadorLogado(request));
 			
 			//pdao.salvarPartida(partida);
-			Sessao.setPartida(partida);
+			Sessao.setPartida(partida, request);
 			return gson.toJson(partida);
 			
 		//Se houver uma partida em andamento ela será retornada
@@ -58,14 +59,14 @@ public class FuncoesPartida {
 	}
 	
 	@GetMapping(path = "/rodada/nova", produces= { "application/json"})
-	public void novaRodada() {
-		Sessao.proxRodada();
+	public void novaRodada(HttpServletRequest request) {
+		Sessao.proxRodada(request);
 	}
 	
 	@PostMapping(path = "/partida/perguntar", produces= { "application/json"})
-	public String fazerPergunta(@RequestBody Entrada entrada) {
+	public String fazerPergunta(@RequestBody Entrada entrada, HttpServletRequest request) {
 		
-		Rodada rodadaAtual = Sessao.getRodadaAtual();
+		Rodada rodadaAtual = Sessao.getRodadaAtual(request);
 		
 		System.out.println(rodadaAtual);
 		
@@ -87,9 +88,9 @@ public class FuncoesPartida {
 	
 	
 	@PostMapping(path = "/partida/tentativa", produces= { "application/json"})
-	public String tentativa(@RequestBody Entrada entrada) {
+	public String tentativa(@RequestBody Entrada entrada, HttpServletRequest request) {
 		
-		Rodada rodadaAtual =  Sessao.getRodadaAtual();
+		Rodada rodadaAtual =  Sessao.getRodadaAtual(request);
 		
 		Personagem personagemRodada = rodadaAtual.getFigura_misteriosa();
 		
@@ -104,10 +105,10 @@ public class FuncoesPartida {
 	}
 	
 	@GetMapping(path = "/partida/fim", produces= { "application/json"})
-	public String fimPartida() {
-		Partida partida = Sessao.getPartida();
-		Sessao.setPartida(null);
-		Sessao.setRodadaAtual(null);
+	public String fimPartida(HttpServletRequest request) {
+		Partida partida = Sessao.getPartida(request);
+		Sessao.setPartida(null, request);
+		Sessao.setRodadaAtual(null, request);
 		
 		return gson.toJson(partida);
 	}

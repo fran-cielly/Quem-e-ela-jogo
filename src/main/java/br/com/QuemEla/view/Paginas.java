@@ -1,5 +1,7 @@
 package br.com.QuemEla.view;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,9 @@ public class Paginas {
 	
 	//tela de login - index
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-		Jogador jogador = Sessao.getJogadorLogado();
+	public ModelAndView index(HttpServletRequest request) {
+		
+		Jogador jogador = Sessao.getJogadorLogado(request);
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -27,8 +30,8 @@ public class Paginas {
 	
 	//tela de cadastro
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
-	public ModelAndView cadastro() {
-		Jogador jogador = Sessao.getJogadorLogado();
+	public ModelAndView cadastro(HttpServletRequest request) {
+		Jogador jogador = Sessao.getJogadorLogado(request);
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -38,8 +41,8 @@ public class Paginas {
 	
 	//home do site
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView home() {
-		Jogador jogador = Sessao.getJogadorLogado();
+	public ModelAndView home(HttpServletRequest request) {
+		Jogador jogador = Sessao.getJogadorLogado(request);
 		if(jogador !=null) {
 			return new ModelAndView("home");
 		}else {
@@ -49,15 +52,15 @@ public class Paginas {
 	
 	//deslogar
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
-	public ModelAndView sair() {
-		Sessao.setJogadorLogado(null);
+	public ModelAndView sair(HttpServletRequest request) {
+		Sessao.setJogadorLogado(null, request);
 		return new ModelAndView("index");	
 	}
 	
 	@RequestMapping(value = "/partida", method = RequestMethod.GET)
-	public ModelAndView partida() {
+	public ModelAndView partida(HttpServletRequest request) {
 
-		Jogador jogador = Sessao.getJogadorLogado();
+		Jogador jogador = Sessao.getJogadorLogado( request);
 		if(jogador !=null) {
 			return new ModelAndView("partida");
 		}else {
@@ -67,9 +70,9 @@ public class Paginas {
 	
 	
 	@RequestMapping(value = "/galeria", method = RequestMethod.GET)
-	public ModelAndView galeria() {
+	public ModelAndView galeria(HttpServletRequest request) {
 
-		Jogador jogador = Sessao.getJogadorLogado();
+		Jogador jogador = Sessao.getJogadorLogado(request);
 		if(jogador !=null) {
 			return new ModelAndView("galeria");
 		}else {

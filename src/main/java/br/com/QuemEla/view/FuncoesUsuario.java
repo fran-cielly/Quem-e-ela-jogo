@@ -1,5 +1,7 @@
 package br.com.QuemEla.view;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,7 +24,7 @@ public class FuncoesUsuario {
 	JogadorDAO dao = new JogadorDAO();
 
 	@PostMapping(path = "/usuario/cadastrar", produces = { "application/json" })
-	public String novoUsuario(@RequestBody Jogador jogador) {
+	public String novoUsuario(@RequestBody Jogador jogador, HttpServletRequest request) {
 		
 		new ListaDeMensagens();
 		
@@ -32,7 +34,7 @@ public class FuncoesUsuario {
 			dao.salvarJogador(jogador);
 			
 			Jogador jogadorEncontrado = dao.getJogadorByEmail(nome, jogador.getSenha());
-			Sessao.setJogadorLogado(jogadorEncontrado);
+			Sessao.setJogadorLogado(jogadorEncontrado, request);
 			
 			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
 		}else{
@@ -42,13 +44,15 @@ public class FuncoesUsuario {
 
 	// @GetMapping(path = "/usuario/listar/{cod}")
 	@PostMapping(path = "/usuario/login", produces = { "application/json" })
-	public String login(@RequestBody Jogador jogadorlogin) {
+	public String login(@RequestBody Jogador jogadorlogin, HttpServletRequest request) {
 		try {
+			
+			
 			new ListaDeMensagens();
 			Jogador jogador = dao.getJogadorByEmail(jogadorlogin.getNome(), jogadorlogin.getSenha());
 			
 			if(jogador != null) {
-				Sessao.setJogadorLogado(jogador);
+				Sessao.setJogadorLogado(jogador, request);
 				return gson.toJson(jogador);
 			}else {
 				return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));
