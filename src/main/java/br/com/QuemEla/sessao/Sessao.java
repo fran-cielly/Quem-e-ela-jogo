@@ -9,40 +9,40 @@ import br.com.QuemEla.model.Rodada;
 public class Sessao {
 
 	public static Jogador getJogadorLogado(HttpServletRequest request) {
-		return (Jogador) request.getAttribute("jogadorLogado");
+		return (Jogador) request.getSession().getAttribute("jogadorLogado");
 	}
 	
 	public static void setJogadorLogado(Jogador jogador, HttpServletRequest request) {
-		request.setAttribute("jogadorLogado", jogador);
+		request.getSession().setAttribute("jogadorLogado", jogador);
 	}
 	
 	public static Partida getPartida(HttpServletRequest request) {
-		return (Partida) request.getAttribute("partidaAtual");
+		return (Partida) request.getSession().getAttribute("partidaAtual");
 	}
 	
 	public static void setPartida(Partida partida, HttpServletRequest request) {
-		request.setAttribute("partidaAtual", partida);
-		request.setAttribute("rodadaAtual", partida.getRodadas().get(0));
+		request.getSession().setAttribute("partidaAtual", partida);
+		request.getSession().setAttribute("rodadaAtual", partida.getRodadas().get(0));
 	}
 	
 	public static Rodada getRodadaAtual(HttpServletRequest request) {
-		return (Rodada) request.getAttribute("rodadaAtual");
+		return (Rodada) request.getSession().getAttribute("rodadaAtual");
 	}
 	
 	public static void setRodadaAtual(Rodada rodada, HttpServletRequest request) {
-		request.setAttribute("rodadaAtual", rodada);
+		request.getSession().setAttribute("rodadaAtual", rodada);
 	}
 	
 	public static void proxRodada(HttpServletRequest request) {
-		Partida partidaAtual = (Partida) request.getAttribute("partidaAtual");
-		Rodada rodadaAtual = (Rodada) request.getAttribute("rodadaAtual");
+		Partida partidaAtual = (Partida) request.getSession().getAttribute("partidaAtual");
+		Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
 		
 		int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
 		
 		if(posicao < 2) {
 			Rodada novaRodada = partidaAtual.getRodadas().get(posicao+1);
 			
-			request.setAttribute("rodadaAtual", novaRodada);
+			request.getSession().setAttribute("rodadaAtual", novaRodada);
 		}
 	}
 }

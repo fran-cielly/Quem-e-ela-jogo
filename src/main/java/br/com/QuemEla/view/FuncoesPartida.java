@@ -16,6 +16,7 @@ import br.com.QuemEla.control.PartidaDAO;
 import br.com.QuemEla.control.PerguntaDAO;
 import br.com.QuemEla.control.PersonagemDAO;
 import br.com.QuemEla.model.Entrada;
+import br.com.QuemEla.model.Jogador;
 import br.com.QuemEla.model.Partida;
 import br.com.QuemEla.model.Pergunta;
 import br.com.QuemEla.model.Personagem;
@@ -34,6 +35,7 @@ public class FuncoesPartida {
 	@GetMapping(path = "/partida/nova", produces= { "application/json"})
 	public String getPartida(HttpServletRequest request) {
 		Partida partidaAtual = Sessao.getPartida(request);
+		//Partida partidaAtual = (Partida) request.getSession().getAttribute("partidaAtual");
 		
 		//Se não existir uma partida em andamento uma será criada
 		if(partidaAtual == null) {
@@ -47,9 +49,11 @@ public class FuncoesPartida {
 			}
 			partida.setData_hora_jogo(date.getTime());
 			partida.setJogador1(Sessao.getJogadorLogado(request));
+			//partida.setJogador1((Jogador) request.getSession().getAttribute("jogadorLogado"));
 			
 			//pdao.salvarPartida(partida);
 			Sessao.setPartida(partida, request);
+			//request.getSession().setAttribute("partidaAtual", partida);
 			return gson.toJson(partida);
 			
 		//Se houver uma partida em andamento ela será retornada
@@ -61,12 +65,23 @@ public class FuncoesPartida {
 	@GetMapping(path = "/rodada/nova", produces= { "application/json"})
 	public void novaRodada(HttpServletRequest request) {
 		Sessao.proxRodada(request);
+		//Partida partidaAtual = (Partida) request.getSession().getAttribute("partidaAtual");
+		//Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
+		
+		//int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
+		
+		//if(posicao < 2) {
+			//Rodada novaRodada = partidaAtual.getRodadas().get(posicao+1);
+			
+			//request.getSession().setAttribute("rodadaAtual", novaRodada);
+		//}
 	}
 	
 	@PostMapping(path = "/partida/perguntar", produces= { "application/json"})
 	public String fazerPergunta(@RequestBody Entrada entrada, HttpServletRequest request) {
 		
 		Rodada rodadaAtual = Sessao.getRodadaAtual(request);
+		//Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
 		
 		System.out.println(rodadaAtual);
 		
@@ -91,6 +106,7 @@ public class FuncoesPartida {
 	public String tentativa(@RequestBody Entrada entrada, HttpServletRequest request) {
 		
 		Rodada rodadaAtual =  Sessao.getRodadaAtual(request);
+		//Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
 		
 		Personagem personagemRodada = rodadaAtual.getFigura_misteriosa();
 		
@@ -109,6 +125,10 @@ public class FuncoesPartida {
 		Partida partida = Sessao.getPartida(request);
 		Sessao.setPartida(null, request);
 		Sessao.setRodadaAtual(null, request);
+		
+		//Partida partida = (Partida) request.getSession().getAttribute("partidaAtual");
+		//request.getSession().setAttribute("partidaAtual", null);
+		//request.getSession().setAttribute("rodadaAtual", null);
 		
 		return gson.toJson(partida);
 	}

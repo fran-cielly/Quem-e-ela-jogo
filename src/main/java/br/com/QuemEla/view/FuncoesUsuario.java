@@ -2,7 +2,6 @@ package br.com.QuemEla.view;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +12,6 @@ import com.google.gson.Gson;
 import br.com.QuemEla.control.JogadorDAO;
 import br.com.QuemEla.control.ListaDeMensagens;
 import br.com.QuemEla.model.Jogador;
-import br.com.QuemEla.model.Mensagem;
 import br.com.QuemEla.sessao.Sessao;
 
 @RestController
@@ -35,6 +33,7 @@ public class FuncoesUsuario {
 			
 			Jogador jogadorEncontrado = dao.getJogadorByEmail(nome, jogador.getSenha());
 			Sessao.setJogadorLogado(jogadorEncontrado, request);
+			//request.getSession().setAttribute("jogadorLogado", jogadorEncontrado);
 			
 			return gson.toJson(ListaDeMensagens.getMensagemCadastroSucesso());
 		}else{
@@ -47,12 +46,15 @@ public class FuncoesUsuario {
 	public String login(@RequestBody Jogador jogadorlogin, HttpServletRequest request) {
 		try {
 			
+			System.err.println("sessao: "+request);
 			
 			new ListaDeMensagens();
 			Jogador jogador = dao.getJogadorByEmail(jogadorlogin.getNome(), jogadorlogin.getSenha());
 			
 			if(jogador != null) {
 				Sessao.setJogadorLogado(jogador, request);
+				//request.getSession().setAttribute("jogador", jogador);
+			
 				return gson.toJson(jogador);
 			}else {
 				return gson.toJson(ListaDeMensagens.getMensagem("nao encontrado"));
