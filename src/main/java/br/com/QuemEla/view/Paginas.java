@@ -59,7 +59,6 @@ public class Paginas {
 	//deslogar
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
 	public ModelAndView sair(HttpServletRequest request) {
-		System.err.println("SESSAO->"+request);
 		
 		Sessao.setJogadorLogado(null, request);
 		//Jogador jogador = (Jogador) request.getSession().getAttribute("jogador");
@@ -70,7 +69,7 @@ public class Paginas {
 	@RequestMapping(value = "/partida", method = RequestMethod.GET)
 	public ModelAndView partida(HttpServletRequest request) {
 
-		Jogador jogador = Sessao.getJogadorLogado( request);
+		Jogador jogador = Sessao.getJogadorLogado(request);
 		//Jogador jogador = (Jogador) request.getSession().getAttribute("jogador");
 		
 		if(jogador !=null) {

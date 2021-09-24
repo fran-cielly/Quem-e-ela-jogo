@@ -46,8 +46,6 @@ public class FuncoesUsuario {
 	public String login(@RequestBody Jogador jogadorlogin, HttpServletRequest request) {
 		try {
 			
-			System.err.println("sessao: "+request);
-			
 			new ListaDeMensagens();
 			Jogador jogador = dao.getJogadorByEmail(jogadorlogin.getNome(), jogadorlogin.getSenha());
 			

@@ -16,31 +16,32 @@
     </head>
     <body>
         <div id="fundo-partida" class="container-fluid">
-           
 
+            <header class="row row-header justify-content-between">
+                <div class="col-2">
+                    <img class="logo-header" src="css/img/logo.png">
+                </div>
+                <div id="caixa-btn-header" class=" d-flex justify-content-between align-self-center">
+                    <button id="btn-som" class="btn btn-header">
+                        <img src="css/img/volume.png">
+                    </button>
+                    <button id="btn-help" class="btn btn-header">
+                        <img src="css/img/interrogation.png">
+                    </button>
+                    <a href="/sair"><button id="btn-sair" class="btn btn-header">
+                        <img src="css/img/close.png">
+                    </button></a>
+                </div>
+            </header>
+    
             <div class="row">
+
                 <div id="container-caixa-personagem" class="col-9">
                     <div id="caixa-personagem">
                         <!--As caixas de personagens são inseridas aqui por meio do js-->
                     </div>
                 </div>
                 <div id="caixa-menu-jogo" class="col-3">
-                    <header class="row row-header justify-content-between">
-                        <div class="col-2">
-                            <img class="logo-header" src="css/img/logo.png">
-                        </div>
-                        <div id="caixa-btn-header" class="d-flex justify-content-between align-self-center">
-                            <button id="btn-som" class="btn btn-header">
-                                <img src="css/img/volume.png">
-                            </button>
-                            <button id="btn-help" class="btn btn-header">
-                                <img src="css/img/interrogation.png">
-                            </button>
-                            <a href="/sair"><button id="btn-sair" class="btn btn-header" href="/sair">
-                                <img src="css/img/close.png">
-                            </button></a>
-                        </div>
-                    </header>
                     <div id="time">
                         <span id="minutos">00</span>:<span id="segundos">00</span>
                     </div>
@@ -77,7 +78,8 @@
                             </div>
                             <div class="col-3 px-md-2" >
                                 <div class="card-categoria" categoria="3">
-                                    <p>Estudo</p>
+                                    <img src="css/img/award.png">
+                                    <p>Prêmios</p>
                                 </div>
                             </div>
                             <div class="col-3 px-md-2">

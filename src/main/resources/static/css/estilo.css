@@ -177,10 +177,9 @@ header{
 /*Estilos tela home*/
 
 #fundo-home{
-    background-image: url(img/fundo-quimica.png);
+    background-image: url(img/fundo-roxo-wallapper.jpg);
     background-size: cover;
     background-position: center;
-    background-color:#3A1948;
 }
 
 .btn-menu{
@@ -217,7 +216,7 @@ header{
 
 #fundo-partida{
     /*background-color:#3A1948;*/
-    background-image: url(img/fundo-roxo-mulher.jpg);
+    background-image: url(img/fundo-roxo-wallapper.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -229,11 +228,12 @@ header{
 
 #caixa-personagem{
     overflow-y: auto;
-    max-height: 550px;
+    margin-top: 1vh;
     padding: 15px;
+    min-height: 87vh;
+    max-height: 87vh;
     background: white;
     border-radius: 5px;
-    min-height: 550px;
 }
 
 #caixa-personagem .row{
@@ -244,7 +244,7 @@ header{
     height: 150px;
     content-visibility: auto;
     text-align: center;
-    background: url(img/colorful-waves.jpg);
+    background: url(img/barra-rosa-laranja.jpg);
     background-size: cover;
     border:5px solid white;
     border-radius: 15px;
@@ -299,8 +299,9 @@ header{
     cursor: pointer;
     height: 5em;
     text-align: center;
-    background-image: url(img/SeaBlue.jpg);
     border: 5px solid white;
+    background-image: url(img/barra-rosa-laranja.jpg);
+    background-size: cover;
 }
 
 .card-categoria img{
@@ -339,9 +340,21 @@ header{
 /*Estilo modal*/
 .modal-body{
     background-color: #FAE5FC !important;
+    font-family: 'Nunito';
+    font-size: 17px;
+    line-height: 26px;
+    padding: 20px;
 }
 
 .modal-header{
-    background-image: url(img/SeaBlue.jpg);
-    color: white;
+    background-image: url(img/barra-rosa-laranja.jpg);
+    background-size: cover;
+    color:#3A1948;
+}
+
+.modal-title{
+    color: #3A1948;
+    font-weight: bold;
+    font-size: x-large;
+    -webkit-text-stroke: 0.05px white;
 }
