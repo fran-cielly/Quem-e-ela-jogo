@@ -31,8 +31,8 @@ public class Paginas {
 	public ModelAndView cadastro(HttpServletRequest request) {
 		System.err.println("SESSAO->"+request);
 		
-		//Jogador jogador = Sessao.getJogadorLogado(request);
-		Jogador jogador = (Jogador) request.getSession().getAttribute("jogador");
+		Jogador jogador = Sessao.getJogadorLogado(request);
+		//Jogador jogador = (Jogador) request.getSession().getAttribute("jogador");
 		
 		if(jogador !=null) {
 			return new ModelAndView("home");

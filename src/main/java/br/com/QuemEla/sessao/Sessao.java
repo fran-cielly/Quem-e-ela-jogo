@@ -9,11 +9,11 @@ import br.com.QuemEla.model.Rodada;
 public class Sessao {
 
 	public static Jogador getJogadorLogado(HttpServletRequest request) {
-		return (Jogador) request.getSession().getAttribute("jogadorLogado");
+		return (Jogador) request.getSession().getAttribute("jogador");
 	}
 	
 	public static void setJogadorLogado(Jogador jogador, HttpServletRequest request) {
-		request.getSession().setAttribute("jogadorLogado", jogador);
+		request.getSession().setAttribute("jogador", jogador);
 	}
 	
 	public static Partida getPartida(HttpServletRequest request) {
