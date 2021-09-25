@@ -48,6 +48,7 @@ public class FuncoesPartida {
 				partida.getRodadas().add(rodada);
 			}
 			partida.setData_hora_jogo(date.getTime());
+			partida.setPontuacao_jogador1(0);
 			partida.setJogador1(Sessao.getJogadorLogado(request));
 			//partida.setJogador1((Jogador) request.getSession().getAttribute("jogadorLogado"));
 			
@@ -65,16 +66,6 @@ public class FuncoesPartida {
 	@GetMapping(path = "/rodada/nova", produces= { "application/json"})
 	public void novaRodada(HttpServletRequest request) {
 		Sessao.proxRodada(request);
-		//Partida partidaAtual = (Partida) request.getSession().getAttribute("partidaAtual");
-		//Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
-		
-		//int posicao = partidaAtual.getRodadas().indexOf(rodadaAtual);	
-		
-		//if(posicao < 2) {
-			//Rodada novaRodada = partidaAtual.getRodadas().get(posicao+1);
-			
-			//request.getSession().setAttribute("rodadaAtual", novaRodada);
-		//}
 	}
 	
 	@PostMapping(path = "/partida/perguntar", produces= { "application/json"})
@@ -106,12 +97,15 @@ public class FuncoesPartida {
 	public String tentativa(@RequestBody Entrada entrada, HttpServletRequest request) {
 		
 		Rodada rodadaAtual =  Sessao.getRodadaAtual(request);
+		Partida partidaAtual = Sessao.getPartida(request);
 		//Rodada rodadaAtual = (Rodada) request.getSession().getAttribute("rodadaAtual");
 		
 		Personagem personagemRodada = rodadaAtual.getFigura_misteriosa();
 		
 		if(personagemRodada.getId() == entrada.getId()) {
 			rodadaAtual.setPontuacao_jogador1(100);
+			partidaAtual.setPontuacao_jogador1(partidaAtual.getPontuacao_jogador1()+100);
+			
 			return gson.toJson(ListaDeMensagens.getMensagem("acertou personagem"));
 			
 		}else {
@@ -123,8 +117,8 @@ public class FuncoesPartida {
 	@GetMapping(path = "/partida/fim", produces= { "application/json"})
 	public String fimPartida(HttpServletRequest request) {
 		Partida partida = Sessao.getPartida(request);
-		Sessao.setPartida(null, request);
 		Sessao.setRodadaAtual(null, request);
+		Sessao.setPartida(null, request);
 		
 		//Partida partida = (Partida) request.getSession().getAttribute("partidaAtual");
 		//request.getSession().setAttribute("partidaAtual", null);

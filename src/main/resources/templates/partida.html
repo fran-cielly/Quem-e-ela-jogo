@@ -4,12 +4,14 @@
         <link rel="sortcut icon" href="css/img/logo.ico" type="image/x-icon">
         <meta charset="UTF-8">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap-reboot.css" rel="stylesheet" type="text/css">
         <link href="css/estilo.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="css/hover.css">
-        <link rel="stylesheet" href="css/alertify.min.css">
+ 
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.bundle.js"></script>
         <script src="js/contador.js"></script>
         <script src="js/requisicoesPartida.js"></script>
         <script src="js/alertify.min.js"></script>
@@ -19,13 +21,13 @@
 
             <header class="row row-header justify-content-between">
                 <div class="col-2">
-                    <img class="logo-header" src="css/img/logo.png">
+                    <img class="logo-header" src="css/img/logo-branco.png">
                 </div>
                 <div id="caixa-btn-header" class=" d-flex justify-content-between align-self-center">
                     <button id="btn-som" class="btn btn-header">
                         <img src="css/img/volume.png">
                     </button>
-                    <button id="btn-help" class="btn btn-header">
+                    <button id="btn-help" class="btn btn-header" data-toggle="modal" data-target="#modal-help">
                         <img src="css/img/interrogation.png">
                     </button>
                     <a href="/sair"><button id="btn-sair" class="btn btn-header">
@@ -131,6 +133,12 @@
                     </div>
                     <div class="modal-body">
                         <div>
+                            <div class="col mx-auto text-center">
+                                <img src="css/img/numbers-0.png" class="pontuacao">
+                            </div>
+                            <div class="col mx-auto text-center">
+                                <img src="css/img/clock.png" class="pontuacao">
+                            </div>
                             Preste atenção no tempo! Lembre-se que cada rodada dura 3 minutos
                             <br>
                             Você não acertou a figura misteriosa antes do tempo acabar, então não pontuou
@@ -155,6 +163,9 @@
                     </div>
                     <div class="modal-body">
                         <div>
+                            <div class="col mx-auto text-center">
+                                <img src="css/img/numbers-100.png" class="pontuacao">
+                            </div>
                             Parabéns! Você acertou a figura misteriosa
                             <br>
                             Você conseguiu acertar a figura misteriosa dentro do tempo, então ganhou 100 pontos
@@ -179,6 +190,9 @@
                     </div>
                     <div class="modal-body">
                         <div>
+                            <div class="col mx-auto text-center">
+                                <img src="css/img/numbers-0.png" class="pontuacao">
+                            </div>
                             Que pena...
                             <br>
                             Você não conseguiu acertar a figura misteriosa, você pode ler a biografia das personagens na galeria no menu
@@ -193,14 +207,52 @@
 
          <!-- Modal de entrada -->
          <div class="modal fade modal-fullscreen" id="modal-entrada" tabindex="-1" aria-labelledby="modal-entrada" aria-hidden="true" data-backdrop="static">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Bem vindo a partida!</h5>
                     </div>
                     <div class="modal-body">
+                        <div id="tutorial" class="row">
+                            <div class="ant-tutorial col-2 seta">
+                                <img src="css/img/left-arrow.png">
+                            </div>
+                            <div class="img-tutorial col-8 mx-auto text-center">
+                                <img src="css/img/tutorial/tutorial-1.png">
+                            </div>
+                            <div class="prox-tutorial col-2 seta">
+                                <img src="css/img/right-arrow.png">
+                            </div>
+                        </div>
                         <div>
                             <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Começar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de ajuda -->
+        <div class="modal fade modal-fullscreen" id="modal-help" tabindex="-1" aria-labelledby="modal-help" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Você pode encontrar ajuda aqui!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div id="tutorial" class="row">
+                            <div class="ant-tutorial col-2 seta">
+                                <img src="css/img/left-arrow.png">
+                            </div>
+                            <div class="img-tutorial col-8 mx-auto text-center">
+                                <img src="css/img/tutorial/tutorial-1.png">
+                            </div>
+                            <div class="prox-tutorial col-2 seta">
+                                <img src="css/img/right-arrow.png">
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-menu btn-lg btn-block btn-comecar" data-dismiss="modal">Sair da ajuda</button>
                         </div>
                     </div>
                 </div>
@@ -217,12 +269,7 @@
                     <div class="modal-body">
                         <div>
                             <div id="info-fim-jogo">
-                                Jogador: <span id="nomeJogadorFim"></span>
-                                Pontuação: <span id=
-                                "pontuacaoFim"></span>
-                                <h1>Rodada 1</h1>
-                                Figura misteriosa:
-                                Potuação da rodada:
+                               <!--inserido por js-->
                             </div>
                         </div>
                         <div>

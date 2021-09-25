@@ -358,3 +358,28 @@ header{
     font-size: x-large;
     -webkit-text-stroke: 0.05px white;
 }
+
+#resposta-texto{
+    font-family: 'Nunito';
+    font-size: 17px;
+    line-height: 26px;
+    padding: 20px;
+}
+
+.pontuacao{
+    width: 25vh;
+    display: block;
+}
+
+#tutorial img{
+    width: 100%;
+}
+
+.seta img{
+    cursor: pointer;
+    max-width: 50% !important;
+}
+
+#modal-entrada .modal-body{
+    min-height: 80vh;
+}

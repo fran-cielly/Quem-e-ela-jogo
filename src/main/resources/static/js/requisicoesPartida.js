@@ -6,6 +6,7 @@ $(document).ready(function() {
     //Quando o jogador clicar na carta ela sera desabilitada caso esa varivel seja false
     var fazerTentativa = false;
     var rodada = 0;
+    var tutorialpasso = 1;
 
     //funcoes que criam os elementos da tela
     //funcao para listar as perguntas dentro da div
@@ -32,7 +33,7 @@ $(document).ready(function() {
                 success: function(resp){
 
                     if(resp.cod!=null && resp.cod == 400){
-                        alert(resp.mensagem);
+                        //alert(resp.mensagem);
                     }else{
                         $("#modal-perguntas").modal('hide');
 
@@ -98,7 +99,6 @@ $(document).ready(function() {
                             $(this).removeClass("card-personagem-removido");
                         }else{
                             $(this).addClass("card-personagem-removido");
-                            alertify.message("Personagem abaixado com sucesso");
                         }
                     }else{
                         fazerTentativa = false;
@@ -112,16 +112,16 @@ $(document).ready(function() {
                                 "id": $(this).attr("codpersonagem")
                             }),
                             success: function(resp){
-                                novaRodada();
                                 if(resp.cod == 1){
                                     $("#modal-acertou").modal('show');
                                 }else{
                                     $("#modal-errou").modal('show');
                                 }
+                              
                             }
                         })
                         .done(function(resp){
-                            //alert(resp)
+                            novaRodada();
                         })
                         .fail(function(jqXHR, textStatus, msg){
                             //alert(msg);
@@ -141,12 +141,10 @@ $(document).ready(function() {
 
     //Começar nova rodada
     function novaRodada(){
-        pauseContador();
-        resetContador();
 
         $(".card-personagem").removeClass("card-personagem-removido");
 
-        if(rodada == 3){
+        if(rodada === 2){
             //finalizar partida ao fim da 3 rodada
             $.ajax({
                 url : "/partida/fim",
@@ -154,25 +152,25 @@ $(document).ready(function() {
                 contentType : 'application/json',
                 dataType : 'json',
                 success: function(resp){
-                    var partida = JSON.parse(resp);
+
+                    var partida = resp;
 
                     var info = "";
 
-                    info+="Jogador: "+partida.jogador1;
-                    info+="Pontuação: "+partida.pontuacao_jogador1;
-                    info+="Rodadas: ";
+                    info+="<h1>Pontuação: "+partida.pontuacao_jogador1+"</h1><br>";
 
                     var lista = Object.values(partida.rodadas);
-
-                    lista.forEach(rodada =>{
-                        info+="Rodada:";
-                        info+="Pergunta:"+rodada.pergunta;
-                        info+="Figura misteriosa"+rodada.figura_misteriosa;
-                        info+="Pontuação"+rodada.pontuacao_jogador1;
+                    var nrodada = 1;
+                    lista.forEach(rodadaFim =>{
+                        info+="Rodada "+nrodada+":<br>";
+                        //info+="Pergunta:"+rodadaFim.pergunta+"<br>";
+                        info+="Figura misteriosa: "+rodadaFim.figura_misteriosa.nome+"<br>";
+                        info+="Pontuação: "+rodadaFim.pontuacao_jogador1+"<br>";
+                        nrodada++;
                     });
 
                     $("#info-fim-jogo").append(info);
-                    $("#modal-fim-jogou").modal('show');
+                    $("#modal-fim-jogo").modal('show');
                 }
             })
             .done(function(resp){
@@ -181,12 +179,12 @@ $(document).ready(function() {
             .fail(function(jqXHR, textStatus, msg){
                 //alert(msg);
             });
+
         }else{
             $.ajax({
                 url : "/rodada/nova",
                 method : "GET",
                 contentType : 'application/json',
-                dataType : 'json',
                 success: function(resp){
                     rodada++;
                 }
@@ -198,6 +196,8 @@ $(document).ready(function() {
                 //alert(msg);
             });
         }
+        pauseContador();
+        resetContador();
     }
 
     //Clicar no botao para fazer uma tentativa de acertar uma figura misteriosa
@@ -248,5 +248,32 @@ $(document).ready(function() {
         .fail(function(jqXHR, textStatus, msg){
             //alert(msg);
         });
+    });
+
+    //Passar imagem do tutorial para frente
+    $(".prox-tutorial").click(function(){
+        if(tutorialpasso < 5){
+            tutorialpasso++;
+        }else{
+            tutorialpasso = 1;
+        }
+        $(".img-tutorial").html("");
+        $(".img-tutorial").append("<img src='css/img/tutorial/tutorial-"+tutorialpasso+".png'>");
+    });
+
+     //Passar imagem do tutorial para tras
+    $(".ant-tutorial").click(function(){
+        if(tutorialpasso > 1){
+            tutorialpasso--;
+        }else{
+            tutorialpasso = 5;
+        }
+        $(".img-tutorial").html("");
+        $(".img-tutorial").append("<img src='css/img/tutorial/tutorial-"+tutorialpasso+".png'>");
+    });
+
+    //Para quando abrir o modal de ajuda abrir o tutorial 1
+    $("#btn-help").click(function(){
+        tutorialpasso = 1;
     });
 });

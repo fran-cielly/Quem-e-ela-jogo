@@ -18,7 +18,7 @@ $(document).ready(function() {
                 if(cod === 404){
                     alert(resp.mensagem)
                 }else if(cod === 200){
-                    alert("Cadastrado com sucesso")
+                    alert("Cadastrado com sucesso");
                     window.location.href = "/home"
                 }
             }
@@ -46,9 +46,8 @@ $(document).ready(function() {
             success: function(resp){
                 cod = resp.cod
                 if(cod === 404){
-                    alert("Usuário não encontrado")
+                    alert("Usuário não encontrado");
                 }else{
-                    alert("Logado com sucesso")
                     window.location.href = "/home"
                 }
             }

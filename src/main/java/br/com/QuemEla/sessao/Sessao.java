@@ -22,7 +22,10 @@ public class Sessao {
 	
 	public static void setPartida(Partida partida, HttpServletRequest request) {
 		request.getSession().setAttribute("partidaAtual", partida);
-		request.getSession().setAttribute("rodadaAtual", partida.getRodadas().get(0));
+		if(partida!=null) {
+			request.getSession().setAttribute("rodadaAtual", partida.getRodadas().get(0));
+		}
+		
 	}
 	
 	public static Rodada getRodadaAtual(HttpServletRequest request) {

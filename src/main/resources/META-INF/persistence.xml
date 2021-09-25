@@ -6,7 +6,7 @@
 
     <persistence-unit name="persistence" transaction-type="RESOURCE_LOCAL">
 
-    <!--  <properties>
+     <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/bd_quem-e-ela" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
@@ -17,9 +17,9 @@
             
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" /> 
-        </properties>-->
+        </properties>
         
-    	<properties>
+    	<!--  <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-156-60-12.compute-1.amazonaws.com:5432/d19euldq4lgr1u" /> 
             <property name="javax.persistence.jdbc.user" value="rxvofxxpshsufm" />
@@ -30,7 +30,7 @@
             
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-        </properties> 
+        </properties> -->
         
     </persistence-unit>
 

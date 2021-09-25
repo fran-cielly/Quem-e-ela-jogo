@@ -1,5 +1,7 @@
 package br.com.QuemEla.view;
 
+import java.util.GregorianCalendar;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import br.com.QuemEla.sessao.Sessao;
 public class FuncoesUsuario {
 
 	Gson gson = new Gson();
+	private GregorianCalendar date = new GregorianCalendar();
 
 	JogadorDAO dao = new JogadorDAO();
 
@@ -29,6 +32,7 @@ public class FuncoesUsuario {
 		String nome = jogador.getNome();
 		
 		if(nome!=null && dao.verificaNome(nome)) {
+			jogador.setData_cadastro(date.getTime());
 			dao.salvarJogador(jogador);
 			
 			Jogador jogadorEncontrado = dao.getJogadorByEmail(nome, jogador.getSenha());
